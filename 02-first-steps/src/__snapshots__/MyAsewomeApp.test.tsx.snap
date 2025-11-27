@@ -1,0 +1,20 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`MyAsewomeApp > Should match snapshot 1`] = `
+<div>
+  <div>
+    <h1>
+      Pablo
+    </h1>
+    <h3>
+      Alonso
+    </h3>
+    <p>
+      4
+    </p>
+    <h1>
+      Activo
+    </h1>
+  </div>
+</div>
+`;
