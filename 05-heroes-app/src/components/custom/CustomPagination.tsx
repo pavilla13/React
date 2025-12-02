@@ -1,22 +1,25 @@
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "../ui/button";
-import { useSearchParams } from "react-router";
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Button } from '../ui/button';
+import { useSearchParams } from 'react-router';
 
 interface Props {
   totalPages: number;
 }
 
-const CustomPagination = ({ totalPages }: Props) => {
+export const CustomPagination = ({ totalPages }: Props) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const queryPage = searchParams.get("page") ?? "1";
+  const queryPage = searchParams.get('page') ?? '1';
   const page = isNaN(+queryPage) ? 1 : +queryPage;
 
   const handlePageChange = (page: number) => {
     if (page < 1 || page > totalPages) return;
-    searchParams.set("page", page.toString());
+
+    searchParams.set('page', page.toString());
+
     setSearchParams(searchParams);
   };
+
   return (
     <div className="flex items-center justify-center space-x-2">
       <Button
@@ -26,13 +29,13 @@ const CustomPagination = ({ totalPages }: Props) => {
         onClick={() => handlePageChange(page - 1)}
       >
         <ChevronLeft className="h-4 w-4" />
-        Previous
+        Anteriores
       </Button>
 
       {Array.from({ length: totalPages }).map((_, index) => (
         <Button
           key={index}
-          variant={page === index + 1 ? "default" : "outline"}
+          variant={page === index + 1 ? 'default' : 'outline'}
           size="sm"
           onClick={() => handlePageChange(index + 1)}
         >
@@ -42,11 +45,9 @@ const CustomPagination = ({ totalPages }: Props) => {
 
       {/* <Button variant="outline" size="sm">
         2
-      </Button>
-      <Button variant="outline" size="sm">
-        3
       </Button> */}
-      {/* <Button variant="ghost" size="sm" disabled>
+      {/* 
+      <Button variant="ghost" size="sm" disabled>
         <MoreHorizontal className="h-4 w-4" />
       </Button> */}
 
@@ -56,11 +57,9 @@ const CustomPagination = ({ totalPages }: Props) => {
         disabled={page === totalPages}
         onClick={() => handlePageChange(page + 1)}
       >
-        Next
+        Siguientes
         <ChevronRight className="h-4 w-4" />
       </Button>
     </div>
   );
 };
-
-export default CustomPagination;

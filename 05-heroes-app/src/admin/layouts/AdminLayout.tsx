@@ -1,11 +1,9 @@
-import { Outlet } from "react-router";
+import { Outlet } from 'react-router';
 
-const AdminLayout = () => {
+export const AdminLayout = () => {
   return (
-    <div className="bg-blue-500">
+    <div className="bg-indigo-500">
       <Outlet />
     </div>
   );
 };
-
-export default AdminLayout;

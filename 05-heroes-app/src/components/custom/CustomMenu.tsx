@@ -1,11 +1,12 @@
 import {
+  NavigationMenuItem,
   NavigationMenuLink,
-  NavigationMenuList,
-} from "@radix-ui/react-navigation-menu";
-import { Link, useLocation } from "react-router";
-import { NavigationMenu, NavigationMenuItem } from "../ui/navigation-menu";
+} from '@radix-ui/react-navigation-menu';
+import { Link, useLocation } from 'react-router';
+import { NavigationMenu, NavigationMenuList } from '../ui/navigation-menu';
+import { cn } from '@/lib/utils';
 
-const CustomMenu = () => {
+export const CustomMenu = () => {
   const { pathname } = useLocation();
 
   const isActive = (path: string) => {
@@ -13,32 +14,31 @@ const CustomMenu = () => {
   };
 
   return (
-    <NavigationMenu>
-      <NavigationMenuList className="flex gap-x-4">
+    <NavigationMenu className="py-5">
+      <NavigationMenuList>
+        {/* Home */}
         <NavigationMenuItem>
           <NavigationMenuLink
             asChild
-            className={`bg-slate-200 rounded-md p-2 ${
-              isActive("/") ? "text-blue-600 font-bold" : ""
-            }`}
+            className={cn(isActive('/') && 'bg-slate-200', 'p-2 rounded-md')}
           >
             <Link to="/">Inicio</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
 
+        {/* Search */}
         <NavigationMenuItem>
           <NavigationMenuLink
             asChild
-            className={`bg-slate-200 rounded-md p-2 ${
-              isActive("/search") ? "text-blue-600 font-bold" : ""
-            }`}
+            className={cn(
+              isActive('/search') && 'bg-slate-200',
+              'p-2 rounded-md'
+            )}
           >
-            <Link to="/search">Buscar</Link>
+            <Link to="/search">Buscar superhéroes</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
   );
 };
-
-export default CustomMenu;

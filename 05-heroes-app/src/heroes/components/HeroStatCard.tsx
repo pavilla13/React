@@ -1,12 +1,12 @@
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { type PropsWithChildren } from "react";
+import type { PropsWithChildren } from 'react';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 
 interface Props extends PropsWithChildren {
   title: string;
   icon: React.ReactNode;
 }
 
-const HeroStatCard = ({ title, icon, children }: Props) => {
+export const HeroStatCard = ({ title, icon, children }: Props) => {
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -17,5 +17,3 @@ const HeroStatCard = ({ title, icon, children }: Props) => {
     </Card>
   );
 };
-
-export default HeroStatCard;

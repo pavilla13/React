@@ -1,7 +1,8 @@
-import { heroApi } from "../api/hero.api";
-import type { SummaryInfoResponse } from "../types/summary-info.response";
+import { heroApi } from '../api/hero.api';
+import type { SummaryInformationResponse } from '../types/summary-information.response';
 
 export const getSummaryAction = async () => {
-  const { data } = await heroApi.get<SummaryInfoResponse>("/summary");
+  const { data } = await heroApi.get<SummaryInformationResponse>('/summary');
+
   return data;
 };
