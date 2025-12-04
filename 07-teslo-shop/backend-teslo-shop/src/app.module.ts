@@ -17,10 +17,12 @@ import { MessagesWsModule } from './messages-ws/messages-ws.module';
     ConfigModule.forRoot(),
 
     TypeOrmModule.forRoot({
-      ssl: process.env.STAGE === 'prod',
+      ssl: process.env.STAGE === 'prod' || process.env.STAGE === 'production',
       extra: {
         ssl:
-          process.env.STAGE === 'prod' ? { rejectUnauthorized: false } : null,
+          process.env.STAGE === 'prod' || process.env.STAGE === 'production'
+            ? { rejectUnauthorized: false }
+            : null,
       },
       type: 'postgres',
       // 👇 CAMBIO IMPORTANTE: Usar url si existe, sino usar los campos individuales
